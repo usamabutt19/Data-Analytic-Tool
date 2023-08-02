@@ -4,13 +4,8 @@
   "description": "D3 tree components for vue",
   "author": "desmaisons_david <desmaisons_david@hotmail.com>",
   "scripts": {
-    "dev": "node build/dev-server.js",
-    "doc": "node build/buildDoc.js",
-    "build": "node build/build.js",
-    "unit": "karma start test/unit/karma.conf.js --single-run",
-    "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit/specs",
-    "prepublishOnly": "npm run build"
+    "dev": "node build/dev-server.js",   
+    "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "main": "dist/index.js",
   "files": [
