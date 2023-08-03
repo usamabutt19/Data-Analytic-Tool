@@ -8,8 +8,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 // add hot-reload related code to entry chunks
 module.exports = merge(baseWebpackConfig, {
   entry: {
-    app1: ['./build/dev-client'].concat('./example/tree/main.js'),
-    app2: ['./build/dev-client'].concat('./example/hierarchicalEdgeBundling/main.js')
+    app1: ['./build/dev-client'].concat('./example/login/main.js'),
+    app2: ['./build/dev-client'].concat('./example/hierarchicalEdgeBundling/main.js'),
+    app3: ['./build/dev-client'].concat('./example/tree/main.js')
   },
   module: {
     loaders: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
@@ -30,9 +31,15 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.NoErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
+      filename: './example/login/index.html',
+      template: './example/login/index.html',
+      chunks: ['app1'],
+      inject: true
+    }),
+    new HtmlWebpackPlugin({
       filename: './example/tree/index.html',
       template: './example/tree/index.html',
-      chunks: ['app1'],
+      chunks: ['app3'],
       inject: true
     }),
     new HtmlWebpackPlugin({

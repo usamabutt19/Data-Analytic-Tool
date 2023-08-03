@@ -8,7 +8,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 // add hot-reload related code to entry chunks
 module.exports = merge(baseWebpackConfig, {
   entry: {
-    tree: ['./build/dev-client'].concat('./example/tree/main.js'),
+    tree: ['./build/dev-client'].concat('./example/login/main.js'),
+    tree2: ['./build/dev-client'].concat('./example/tree/main.js'),
     hierarchicalEdgeBundling: ['./build/dev-client'].concat('./example/hierarchicalEdgeBundling/main.js')
   },
   module: {
@@ -32,8 +33,14 @@ module.exports = merge(baseWebpackConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: '../docs/tree.html',
-      template: './example/tree/index.html',
+      template: './example/login/index.html',
       chunks: ['tree'],
+      autoInject: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: '../docs/tree.html',
+      template: './example/tree/index.html',
+      chunks: ['tree2'],
       autoInject: true
     }),
     new HtmlWebpackPlugin({

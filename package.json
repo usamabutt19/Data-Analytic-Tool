@@ -4,7 +4,7 @@
   "description": "D3 tree components for vue",
   "author": "desmaisons_david <desmaisons_david@hotmail.com>",
   "scripts": {
-    "dev": "node build/dev-server.js",   
+    "dev": "node build/dev-server.js",
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "main": "dist/index.js",
@@ -23,7 +23,8 @@
     "d3-interpolate-path": "^2.1.1",
     "popper.js": "^1.15.0",
     "vue": "^2.6.10",
-    "vue-resize-directive": "^1.2.0"
+    "vue-resize-directive": "^1.2.0",
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
