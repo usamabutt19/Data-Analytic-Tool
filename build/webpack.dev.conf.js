@@ -10,7 +10,8 @@ module.exports = merge(baseWebpackConfig, {
   entry: {
     app1: ['./build/dev-client'].concat('./example/login/main.js'),
     app2: ['./build/dev-client'].concat('./example/hierarchicalEdgeBundling/main.js'),
-    app3: ['./build/dev-client'].concat('./example/tree/main.js')
+    app3: ['./build/dev-client'].concat('./example/tree/main.js'),
+    app4: ['./build/dev-client'].concat('./example/search/main.js')
   },
   module: {
     loaders: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
@@ -40,6 +41,12 @@ module.exports = merge(baseWebpackConfig, {
       filename: './example/tree/index.html',
       template: './example/tree/index.html',
       chunks: ['app3'],
+      inject: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: './example/search/index.html',
+      template: './example/search/index.html',
+      chunks: ['app4'],
       inject: true
     }),
     new HtmlWebpackPlugin({

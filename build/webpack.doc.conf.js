@@ -10,6 +10,7 @@ module.exports = merge(baseWebpackConfig, {
   entry: {
     tree: ['./build/dev-client'].concat('./example/login/main.js'),
     tree2: ['./build/dev-client'].concat('./example/tree/main.js'),
+    tree3: ['./build/dev-client'].concat('./example/search/main.js'),
     hierarchicalEdgeBundling: ['./build/dev-client'].concat('./example/hierarchicalEdgeBundling/main.js')
   },
   module: {
@@ -41,6 +42,12 @@ module.exports = merge(baseWebpackConfig, {
       filename: '../docs/tree.html',
       template: './example/tree/index.html',
       chunks: ['tree2'],
+      autoInject: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: '../docs/tree.html',
+      template: './example/search/index.html',
+      chunks: ['tree3'],
       autoInject: true
     }),
     new HtmlWebpackPlugin({

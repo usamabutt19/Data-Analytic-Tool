@@ -70,6 +70,9 @@ module.exports = app.listen(port, function (err) {
   var uri1 = 'http://localhost:' + port + '/example/tree/index.html'
   console.log('Listening at ' + uri1 + '\n')
 
+  var uri2 = 'http://localhost:' + port + '/example/search/index.html'
+  console.log('Listening at ' + uri2 + '\n')
+
   // when env is testing, don't need open it
   if (process.env.NODE_ENV !== 'testing') {
     opn(uri)
