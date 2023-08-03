@@ -235,7 +235,6 @@
 <script>
 import {tree} from '../../src/'
 import data from '../../data/data'
-import {getGremlin} from './gremlinConfiguration'
 import noBehavior from '../../src/behaviors/noBehavior'
 let currentId = 500
 
@@ -260,7 +259,6 @@ Object.assign(data, {
   currentData: null,
   zoomable: true,
   isLoading: false,
-  isUnderGremlinsAttack: false,
   nodeTextDisplay: 'all',
   linkLayout: 'bezier',
   minZoom: 0.8,
@@ -333,53 +331,53 @@ export default {
       }
       this.isLoading = true
       this.$refs['tree'].resetZoom().then(() => { this.isLoading = false })
-    },
-    gremlins () {
-      if (this.isUnderGremlinsAttack) {
-        this.horde.stop()
-        return
-      }
-
-      const updateType = (type) => {
-        switch (type) {
-          case 'vertical':
-            return 'circular'
-
-          case 'circular':
-            return 'horizontal'
-
-          case 'horizontal':
-            return 'vertical'
-        }
-      }
-
-      const updateNodeTextDisplay = (display) => {
-        switch (display) {
-          case 'all':
-            return 'leaves'
-
-          case 'leaves':
-            return 'extremities'
-
-          case 'extremities':
-            return 'all'
-        }
-      }
-
-      this.duration = 20
-      const changeLayout = () => { this.type = (this.type === 'tree') ? 'cluster' : 'tree' }
-      const changeNode = () => { this.linkLayout = (this.linkLayout === 'bezier') ? 'orthogonal' : 'bezier' }
-      const changeType = () => { this.layoutType = updateType(this.layoutType) }
-      const changeNodeTextDisplay = () => { this.nodeTextDisplay = updateNodeTextDisplay(this.nodeTextDisplay) }
-      const resetZoom = this.resetZoom.bind(this)
-      const [treeDiv] = this.$el.getElementsByClassName('tree')
-      const [gremlinsButton] = this.$el.getElementsByClassName('btn-danger')
-      var horde = getGremlin(gremlinsButton, treeDiv, {changeType, changeLayout, changeNode, changeNodeTextDisplay, resetZoom})
-      horde.after(() => { this.isUnderGremlinsAttack = false })
-      horde.unleash()
-      this.horde = horde
-      this.isUnderGremlinsAttack = true
     }
+    // gremlins () {
+    //   if (this.isUnderGremlinsAttack) {
+    //     this.horde.stop()
+    //     return
+    //   }
+
+    //   const updateType = (type) => {
+    //     switch (type) {
+    //       case 'vertical':
+    //         return 'circular'
+
+    //       case 'circular':
+    //         return 'horizontal'
+
+    //       case 'horizontal':
+    //         return 'vertical'
+    //     }
+    //   }
+
+    //   const updateNodeTextDisplay = (display) => {
+    //     switch (display) {
+    //       case 'all':
+    //         return 'leaves'
+
+    //       case 'leaves':
+    //         return 'extremities'
+
+    //       case 'extremities':
+    //         return 'all'
+    //     }
+    //   }
+
+    //   this.duration = 20
+    //   const changeLayout = () => { this.type = (this.type === 'tree') ? 'cluster' : 'tree' }
+    //   const changeNode = () => { this.linkLayout = (this.linkLayout === 'bezier') ? 'orthogonal' : 'bezier' }
+    //   const changeType = () => { this.layoutType = updateType(this.layoutType) }
+    //   const changeNodeTextDisplay = () => { this.nodeTextDisplay = updateNodeTextDisplay(this.nodeTextDisplay) }
+    //   const resetZoom = this.resetZoom.bind(this)
+    //   const [treeDiv] = this.$el.getElementsByClassName('tree')
+    //   const [gremlinsButton] = this.$el.getElementsByClassName('btn-danger')
+    //   var horde = getGremlin(gremlinsButton, treeDiv, {changeType, changeLayout, changeNode, changeNodeTextDisplay, resetZoom})
+    //   horde.after(() => { this.isUnderGremlinsAttack = false })
+    //   horde.unleash()
+    //   this.horde = horde
+    //   this.isUnderGremlinsAttack = true
+    // }
   }
 }
 </script>
